@@ -7,3 +7,11 @@ class CommentSchema(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class CreateCommentSchema(BaseModel):
+    content: str
+
+
+class UpdateCommentSchema(BaseModel):
+    content: str
