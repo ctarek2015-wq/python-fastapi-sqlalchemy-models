@@ -4,9 +4,7 @@ from .comment import CommentSchema
 
 
 class TeaSchema(BaseModel):
-    id: Optional[int] = (
-        True  # This makes sure you don't have to explicitly add an id when sending json data
-    )
+    id: Optional[int] = True
     name: str
     in_stock: bool
     rating: int
@@ -16,6 +14,7 @@ class TeaSchema(BaseModel):
         orm_mode = True
 
 
+# these are for req.body
 class CreateTeaSchema(BaseModel):
     name: str
     in_stock: bool
