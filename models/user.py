@@ -17,6 +17,7 @@ class UserModel(BaseModel):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     teas = relationship("TeaModel", back_populates="user")
+    comments = relationship("CommentModel", back_populates="user")
 
     def set_password(self, password: str):
         self.password = pwd_context.hash(password)
