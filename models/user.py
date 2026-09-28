@@ -4,6 +4,7 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 import jwt
 from config.environment import JWT_SECRET
+from sqlalchemy.orm import relationship
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -15,6 +16,7 @@ class UserModel(BaseModel):
     username = Column(String, nullable=False, unique=True)
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
+    teas = relationship("TeaModel", back_populates="user")
 
     def set_password(self, password: str):
         self.password = pwd_context.hash(password)

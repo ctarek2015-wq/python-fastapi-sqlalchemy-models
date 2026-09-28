@@ -18,16 +18,15 @@ try:
     print("Seeding the database...")
     db = SessionLocal()
 
+    db.add_all(user_list)
+    db.commit()
+
     # Seed teas first, as comments depend on them
     db.add_all(teas_list)
     db.commit()
 
     # Seed comments after teas
     db.add_all(comments_list)
-    db.commit()
-
-    # Seed users after comments
-    db.add_all(user_list)
     db.commit()
 
     db.close()

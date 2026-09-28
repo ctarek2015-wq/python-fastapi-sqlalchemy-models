@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional, List
 from .comment import CommentSchema
+from .user import UserSchema
 
 
 class TeaSchema(BaseModel):
@@ -9,6 +10,7 @@ class TeaSchema(BaseModel):
     in_stock: bool
     rating: int
     comments: List[CommentSchema] = []
+    user: UserSchema
 
     class Config:
         orm_mode = True
