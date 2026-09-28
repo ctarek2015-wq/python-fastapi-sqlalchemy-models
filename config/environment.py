@@ -1,1 +1,3 @@
-db_URI = "postgresql+psycopg2://kratos@localhost:5432/teas_db"
+import os
+
+DATABASE_URL = os.getenv("DATABASE_URL")
