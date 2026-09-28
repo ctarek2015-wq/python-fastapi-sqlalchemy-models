@@ -21,6 +21,6 @@ class TeaModel(BaseModel):
     name = Column(String, unique=True)
     in_stock = Column(Boolean)
     rating = Column(Integer)
-    user_id = Column(Integer, ForeignKey("users.id"))
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("UserModel", back_populates="teas")
     comments = relationship("CommentModel", back_populates="tea")
