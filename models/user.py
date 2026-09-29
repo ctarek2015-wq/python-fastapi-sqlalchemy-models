@@ -18,6 +18,7 @@ class UserModel(BaseModel):
     password = Column(String, nullable=False)
     teas = relationship("TeaModel", back_populates="user")
     comments = relationship("CommentModel", back_populates="user")
+    role = Column(String, nullable=False, default="user")
 
     def set_password(self, password: str):
         self.password = pwd_context.hash(password)
@@ -30,6 +31,7 @@ class UserModel(BaseModel):
             "exp": datetime.now(timezone.utc) + timedelta(days=1),
             "iat": datetime.now(timezone.utc),
             "sub": str(self.id),
+            "role": self.role,
         }
 
         token = jwt.encode(payload, JWT_SECRET, algorithm="HS256")
