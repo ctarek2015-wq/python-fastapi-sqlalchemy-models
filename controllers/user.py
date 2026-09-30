@@ -12,7 +12,7 @@ from serializers.user import (
 )
 from database import get_db
 
-router = APIRouter()
+router = APIRouter(tags=["Users Management"])
 
 
 @router.post("/register", response_model=UserTokenSchema, status_code=201)

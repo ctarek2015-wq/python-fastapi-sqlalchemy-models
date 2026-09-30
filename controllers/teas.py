@@ -13,7 +13,7 @@ from serializers.tea import TeaSchema, CreateTeaSchema, UpdateTeaSchema
 from typing import List
 from dependencies.get_current_user import get_current_user
 
-router = APIRouter()
+router = APIRouter(tags=["Teas Management"])
 
 
 @router.get("/teas", response_model=List[TeaSchema])
@@ -83,6 +83,6 @@ def delete_tea(
         raise HTTPException(status_code=403, detail="Not authorized to delete this tea")
 
     db.delete(db_tea)
-    db.commit
+    db.commit()
     # return {"message": f"Tea with ID {tea_id} has been deleted"}
     return None

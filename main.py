@@ -10,7 +10,23 @@ from controllers.teas import router as TeasRouter
 from controllers.comments import router as CommentsRouter
 from controllers.user import router as UsersRouter
 
-app = FastAPI()
+tags = [
+    {
+        "name": "Comments Management",
+        "description": "Operations related to comments for teas",
+    },
+    {
+        "name": "Teas Management",
+        "description": "Operations related to teas",
+    },
+    {
+        "name": "Users Management",
+        "description": "Operations related to users",
+    },
+]
+app = FastAPI(
+    title="Tea API", description="API for managing teas and comments", openapi_tags=tags
+)
 app.include_router(TeasRouter, prefix="/api")
 app.include_router(CommentsRouter, prefix="/api")
 app.include_router(UsersRouter, prefix="/api")

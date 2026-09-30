@@ -15,7 +15,11 @@ from typing import List
 
 from dependencies.get_current_user import get_current_user
 
-router = APIRouter()
+router = APIRouter(
+    tags=[
+        "Comments Management",
+    ]
+)
 
 
 @router.get("/teas/{tea_id}/comments", response_model=List[CommentSchema])
