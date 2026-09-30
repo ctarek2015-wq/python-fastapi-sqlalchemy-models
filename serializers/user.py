@@ -12,7 +12,6 @@ class UserRegistrationSchema(BaseModel):
 class UserLoginSchema(BaseModel):
     username: str
     password: str
-    role: str
 
 
 # Response Schema
